@@ -9,14 +9,6 @@
 
 // 添加要在此处预编译的标头
 
-#ifdef SIMPLE_CLASS_EXPORT
-
-#define SIMPLE_CLASS_EXPORT __declspec(dllexport)
-
-#else
-
-#define SIMPLE_CLASS_EXPORT __declspec(dllimport)
-
-#endif
+#include "framework.h"
 
 #endif //PCH_H

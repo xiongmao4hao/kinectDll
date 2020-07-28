@@ -146,7 +146,7 @@
       <PreprocessorDefinitions>NDEBUG;KINECTDLL_EXPORTS;_WINDOWS;_USRDLL;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
       <PrecompiledHeaderFile>pch.h</PrecompiledHeaderFile>
-      <AdditionalIncludeDirectories>E:\dllTry\kinectDll\inc;D:\Azure Kinect DK\Azure Kinect DK\sdk\include;D:\Azure Kinect DK\Azure Kinect DK Body Tracker\sdk\include;D:\Azure Kinect DK\libjpeg-turbo\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>E:\dllTry\kinectDll\inc;D:\Azure Kinect DK\Azure Kinect DK\sdk\include;D:\Azure Kinect DK\Azure Kinect DK Body Tracker\sdk\include;D:\Azure Kinect DK\libjpeg-turbo\include;E:\dllTry\kinectDll;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Windows</SubSystem>
@@ -154,21 +154,34 @@
       <OptimizeReferences>true</OptimizeReferences>
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <EnableUAC>false</EnableUAC>
-      <AdditionalDependencies>opencv_world411d.lib;k4abt.lib;kernel32.lib;user32.lib;gdi32.lib;winspool.lib;comdlg32.lib;advapi32.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;odbc32.lib;odbccp32.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>opencv_world411.lib;k4abt.lib;kernel32.lib;user32.lib;gdi32.lib;winspool.lib;comdlg32.lib;advapi32.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;odbc32.lib;odbccp32.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalLibraryDirectories>D:\Azure Kinect DK\Azure Kinect DK Body Tracker\sdk\windows-desktop\amd64\release\lib;D:\Azure Kinect DK\Azure Kinect DK\sdk\windows-desktop\amd64\release\lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClInclude Include="framework.h" />
+    <ClInclude Include="inc\DepthPixelColorizer.h" />
+    <ClInclude Include="inc\getAngel.h" />
+    <ClInclude Include="inc\kinectDLL.h" />
+    <ClInclude Include="inc\kinect_angle.h" />
+    <ClInclude Include="inc\kinect_cv_dk.h" />
+    <ClInclude Include="inc\myjoints.h" />
+    <ClInclude Include="inc\Pixel.h" />
+    <ClInclude Include="inc\StaticImageProperties.h" />
+    <ClInclude Include="inc\windows_thread.h" />
+    <ClInclude Include="inc\windows_time.h" />
+    <ClInclude Include="kinect_record.h" />
     <ClInclude Include="pch.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="dllmain.cpp" />
-    <ClCompile Include="pch.cpp">
+    <ClCompile Include="kinect_record.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Create</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Create</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Create</PrecompiledHeader>
     </ClCompile>
+    <ClCompile Include="src\getAngel.cpp" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

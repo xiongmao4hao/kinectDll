@@ -48,10 +48,10 @@
     <ClInclude Include="inc\windows_time.h">
       <Filter>头文件</Filter>
     </ClInclude>
-    <ClInclude Include="inc\kinectDLL.h">
+    <ClInclude Include="inc\kinect_record.h">
       <Filter>头文件</Filter>
     </ClInclude>
-    <ClInclude Include="kinect_record.h">
+    <ClInclude Include="kinectDLL.h">
       <Filter>头文件</Filter>
     </ClInclude>
   </ItemGroup>
@@ -63,6 +63,9 @@
       <Filter>源文件</Filter>
     </ClCompile>
     <ClCompile Include="kinect_record.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="kinectDLL.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
   </ItemGroup>

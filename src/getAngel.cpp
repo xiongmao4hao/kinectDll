@@ -3,11 +3,14 @@
 #include "pch.h"
 
 // 当使用预编译的头时，需要使用此源文件，编译才能成功。
+
+
 #include"getAngel.h"
-#define PI 3.1415926
 #include<iostream>
 using namespace std;
 //k4abt_skeleton_t skeleton0;
+
+#define PI 3.1415926
 
 float GetAngel(float ax, float ay, float az, float bx, float by, float bz, float cx, float cy, float cz)
 {

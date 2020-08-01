@@ -27,10 +27,9 @@ int recordStop()
 	return 0;
 }
 
-ReturnKinct recordOne()
+int recordOne(ReturnKinct& returnKinct)
 {
 	kinct.bOnePicture = true;
-	ReturnKinct returnKinct;
 	while (1)
 	{
 		if (!kinct.bOnePicture)
@@ -47,5 +46,5 @@ ReturnKinct recordOne()
 			break;
 		}
 	}
-	return returnKinct;
+	return 0;
 }

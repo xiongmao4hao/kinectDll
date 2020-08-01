@@ -39,11 +39,12 @@ class Kinct
 public:
 	static volatile bool  bOnePicture;
 	Kinct();
+	~Kinct();
 	int init();
 	int del();
 	int capThread();
 	int getAngle(float (&fAngle)[ANGLE_NUM]);
-	int getJoint(float *(&fJoint)[BODU_POINT_NUM]);
+	int getJoint(float (&fJoint)[BODU_POINT_NUM*3+1]);
 	int getCmat(cv::Mat&);
 
 private:

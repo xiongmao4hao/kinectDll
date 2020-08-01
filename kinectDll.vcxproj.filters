@@ -33,9 +33,6 @@
     <ClInclude Include="inc\kinect_cv_dk.h">
       <Filter>头文件</Filter>
     </ClInclude>
-    <ClInclude Include="inc\myjoints.h">
-      <Filter>头文件</Filter>
-    </ClInclude>
     <ClInclude Include="inc\Pixel.h">
       <Filter>头文件</Filter>
     </ClInclude>

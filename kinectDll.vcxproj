@@ -105,7 +105,7 @@
       <WarningLevel>Level3</WarningLevel>
       <Optimization>Disabled</Optimization>
       <SDLCheck>true</SDLCheck>
-      <PreprocessorDefinitions>_DEBUG;KINECTDLL_EXPORTS;_WINDOWS;_USRDLL;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>_DEBUG;KINECTDLL_EXPORTS;_WINDOWS;_USRDLL;SIMPLE_CLASS_EXPORT;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
       <PrecompiledHeaderFile>pch.h</PrecompiledHeaderFile>
     </ClCompile>
@@ -143,7 +143,7 @@
       <FunctionLevelLinking>true</FunctionLevelLinking>
       <IntrinsicFunctions>true</IntrinsicFunctions>
       <SDLCheck>true</SDLCheck>
-      <PreprocessorDefinitions>NDEBUG;KINECTDLL_EXPORTS;_WINDOWS;_USRDLL;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>NDEBUG;KINECTDLL_EXPORTS;_WINDOWS;_USRDLL;SIMPLE_CLASS_EXPORT;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
       <PrecompiledHeaderFile>pch.h</PrecompiledHeaderFile>
       <AdditionalIncludeDirectories>E:\dllTry\kinectDll\inc;D:\Azure Kinect DK\Azure Kinect DK\sdk\include;D:\Azure Kinect DK\Azure Kinect DK Body Tracker\sdk\include;D:\Azure Kinect DK\libjpeg-turbo\include;E:\dllTry\kinectDll;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
@@ -165,7 +165,6 @@
     <ClInclude Include="inc\kinect_angle.h" />
     <ClInclude Include="inc\kinect_cv_dk.h" />
     <ClInclude Include="inc\kinect_record.h" />
-    <ClInclude Include="inc\myjoints.h" />
     <ClInclude Include="inc\Pixel.h" />
     <ClInclude Include="inc\StaticImageProperties.h" />
     <ClInclude Include="inc\windows_thread.h" />

@@ -12,15 +12,28 @@ using namespace std;
 Kinct kinct;
 cv::Mat cmatData;
 
-
 Kinct::Kinct()
 	:bInitFlag(false),
 	bDel(false),
-	uintNum(0)
+	uintNum(0),
+	tids(NULL),
+	dev(NULL),
+	sensorCalibration(NULL),
+	colorFrame(NULL),
+	onePictureFlag(NULL)
 {
 	//cout << "Kinct cause done" << endl;
 }
 
+Kinct::~Kinct()
+{
+	//释放内存,new后最好做，虽然进程结束后都会回收
+	delete[] tids;
+	delete[] colorFrame;
+	delete[] sensorCalibration;
+	delete[] dev;
+	delete[] onePictureFlag;
+}
 volatile bool Kinct::bOnePicture = false;
 
 int Kinct::onePicture(const int i, k4a_capture_t sensor_capture, float(&fAngelUsing)[ANGLE_NUM], k4abt_tracker_t& tracker)
@@ -197,6 +210,7 @@ int Kinct::init()
 {
 	//相机启动
 	uintNum = k4a::device::get_installed_count();
+	cout << uintNum << endl;
 	if (uintNum == 0)
 	{
 		cout << "no azure kinect dk devices detected!" << endl;
@@ -255,7 +269,6 @@ int Kinct::init()
 	//初始化成功标志
 	bInitFlag = true;
 	return 0;
-
 }
 
 int Kinct::del()
@@ -274,6 +287,7 @@ int Kinct::del()
 	delete[] colorFrame;
 	delete[] sensorCalibration;
 	delete[] dev;
+	delete[] onePictureFlag;
 	//进程关闭flag重置
 	bDel = false;
 	return 0;
@@ -307,19 +321,25 @@ int Kinct::getAngle(float (&fAngle)[ANGLE_NUM])
 	return 0;
 }
 
-int Kinct::getJoint(float *(&fJoint)[BODU_POINT_NUM])
+int Kinct::getJoint(float (&fJoint)[BODU_POINT_NUM*3+1])
 {
-	for (int i = 0; i < ANGLE_NUM; i++)
+	fJoint[0] = timeStamp;
+	for (int i = 0; i < ANGLE_NUM*3; i++)
 	{
-		fJoint[i] = skeleton.joints[i].position.v;//传递的为向量的数组指针
+		fJoint[i+1] = skeleton.joints[i/3].position.xyz.x;//传递的为向量的数组指针
+		fJoint[i+2] = skeleton.joints[i/3].position.xyz.y;//传递的为向量的数组指针
+		fJoint[i+3] = skeleton.joints[i/3].position.xyz.z;//传递的为向量的数组指针
 	}
 	return 0;
 }
 
 int Kinct::getCmat(cv::Mat& oneMat)
 {
+	double scale = 0.05;
+	Size dsize = Size(colorFrame[0].cols * scale, colorFrame[0].rows * scale);
 	std::unique_lock<std::mutex> locker_r(onePictureFlag[0]);
-	oneMat = colorFrame[0].clone();
+	/*oneMat = colorFrame[0].clone();*/
+	resize(colorFrame[0], oneMat, dsize);
 	locker_r.unlock();
 	//float* dat = (float*)colorFrame[0].data;
 	////oneMat = colorFrame[0];

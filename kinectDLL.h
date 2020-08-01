@@ -4,11 +4,11 @@
 
 #ifdef SIMPLE_CLASS_EXPORT
 
-#define SIMPLE_CLASS_EXPORT __declspec(dllexport)
+#define SIMPLE_CLASS_EXPORT extern "C" __declspec(dllexport)
 
 #else
 
-#define SIMPLE_CLASS_EXPORT __declspec(dllimport)
+#define SIMPLE_CLASS_EXPORT extern "C" __declspec(dllimport)
 
 #endif
 
@@ -19,10 +19,11 @@
 #ifndef BODU_POINT_NUM
 #define BODU_POINT_NUM 32
 #endif
+
 typedef struct
 {
 	float fAngle[ANGLE_NUM];
-	float *fJoint[BODU_POINT_NUM];
+	float fJoint[BODU_POINT_NUM*3+1];
 	uchar* cmatData;
 	int sizeMat;
 	int sizeRows;
@@ -32,4 +33,4 @@ typedef struct
 
 SIMPLE_CLASS_EXPORT int recordStart();
 SIMPLE_CLASS_EXPORT int recordStop();
-SIMPLE_CLASS_EXPORT ReturnKinct recordOne();
+SIMPLE_CLASS_EXPORT int recordOne(ReturnKinct& returnKinct);
